@@ -1,6 +1,7 @@
-package com.mysite.sbb2;
+package com.mysite.sbb2.users;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,5 +34,6 @@ public class Users {
 	
 	private int cnt;
 	
+	//private List<Users> usersList;
 
 }

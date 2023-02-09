@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>users 테이블의 list를 출력하는 페이지</h1>
+	<hr>
+	<table>
+		<tr>
+		<th>등록순번</th>
+		<th>입력숫자</th>
+		<th>이메일</th>
+		<th>이름</th>
+		<th>비밀번호</th>
+		<th>등록일</th>
+		</tr>
+		
+		<tr th:each ="users:${usersList}">
+			<td th:text="${users.idx}">
+			<td th:text="${users.cnt}">
+			<td th:text="${users.email}">
+			<td th:text="${users.name}">
+			<td th:text="${users.pass}">
+			<td th:text="${users.regdate}">
+		</tr>
+		
+	</table>
+</body>
+</html>

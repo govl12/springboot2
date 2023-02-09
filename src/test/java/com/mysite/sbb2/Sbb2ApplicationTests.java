@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.mysite.sbb2.users.Users;
+import com.mysite.sbb2.users.UsersRepository;
+
 @SpringBootTest
 class Sbb2ApplicationTests {
 

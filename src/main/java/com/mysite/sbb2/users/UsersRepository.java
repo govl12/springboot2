@@ -1,4 +1,4 @@
-package com.mysite.sbb2;
+package com.mysite.sbb2.users;
 
 import java.util.List;
 
