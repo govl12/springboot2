@@ -19,6 +19,26 @@ class Sbb2ApplicationTests {
 	@Autowired
 	private UsersRepository usersRepository;
 	
+	
+	/*더미 값 1000개 넣기 */
+	
+	@Test
+	public void insert1000() {
+		Users u = null;
+		
+		for(int i = 1 ; i<=1000; i++) {
+			u = new Users();
+			
+			u.setName("이름 - "+i);
+			u.setPass("pass"+i);
+			u.setEmail("e"+i+"@mail.com");
+			u.setRegdate(LocalDateTime.now());
+			u.setCnt(i);
+			
+			this.usersRepository.save(u);
+		}
+	}
+	
 	/*
 	//1. 임의의 값 5개 insert - insert 는 선언해줄 필요 없음.
 	@Test

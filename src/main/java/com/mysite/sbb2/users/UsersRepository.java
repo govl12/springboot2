@@ -11,5 +11,8 @@ public interface UsersRepository extends JpaRepository<Users, Integer>{
 	//select * from users order by regdate desc;
 	List<Users> findAllByOrderByRegdateDesc();
 	
+	Users findByIdx(int idx);
+	
+
 	
 }

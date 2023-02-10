@@ -7,10 +7,12 @@
 <body>
 	<h1>users 테이블의 list를 출력하는 페이지</h1>
 	<hr>
+	<a href="/users/insert">회원등록</a>
+	<hr>
 	<table>
 		<tr>
-		<th>등록순번</th>
-		<th>입력숫자</th>
+		<th>순번</th>
+		<th>번호</th>
 		<th>이메일</th>
 		<th>이름</th>
 		<th>비밀번호</th>
@@ -18,12 +20,12 @@
 		</tr>
 		
 		<tr th:each ="users:${usersList}">
-			<td th:text="${users.idx}">
-			<td th:text="${users.cnt}">
-			<td th:text="${users.email}">
-			<td th:text="${users.name}">
-			<td th:text="${users.pass}">
-			<td th:text="${users.regdate}">
+			<td><a th:href="@{|/users/detail/${users.idx}|}">[[${users.idx}]]</a></td>
+			<td th:text="${users.cnt}"></td>
+			<td th:text="${users.email}"></td>
+			<td th:text="${users.name}"></td>
+			<td th:text="${users.pass}"></td>
+			<td th:text="${users.regdate}"></td>
 		</tr>
 		
 	</table>
