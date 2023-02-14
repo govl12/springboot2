@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 </head>
 <body>
-
-	<table>
-		<tr>
+<div layout:fragment="content" class="container my-3">
+	<h3>등록 번호 <span th:text="${users.idx}"></span>번의 상세정보</h3>
+	<table class="table">
+		<thead class="table-dark">
+			<tr align="center">
+				<th>순번</th>
+				<th>번호</th>
+				<th>이메일</th>
+				<th>이름</th>
+				<th>비밀번호</th>
+				<th>등록일</th>
+			</tr>
+		</thead>
+		<tr align="center">
 			<td th:text="${users.idx}"></td>
 			<td th:text="${users.cnt}"></td>
 			<td th:text="${users.email}"></td>
@@ -17,7 +28,7 @@
 			<td th:text="${users.regdate}"></td>
 		</tr>
 	</table>
-
+</div>
 
 </body>
 </html>
