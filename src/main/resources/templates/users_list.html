@@ -1,71 +1,50 @@
 <html layout:decorate="~{layout}">
 
-	<div layout:fragment="content" class="container my-3">
-		<a th:href="@{/users/insert}" class="btn btn-primary">회원등록</a>
-		<hr>
-		<table class="table">
-			<thead class="table-dark">
-				<tr align ="center">
-					<th>순번</th>
-					<th>번호</th>
-					<th>이메일</th>
-					<th>이름</th>
-					<th>비밀번호</th>
-					<th>등록일</th>
-				</tr>
-			</thead>
-			<tr th:each="users, loop : ${paging}">
-			<td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}">
-			번호
-			</td>
-			<td>
-			<a th:href="@{|/users/detail/${users.idx}|}" th:text="${users.name}"></a>
-			 </td>
-			 <td th:text="${users.pass}"></td>
-			 <td th:text="${users.email}"></td>
-			<!-- <td> [[${#temporals.format(users.RegDate, 'yyyy-MM-dd HH:mm')}]]</td>  -->
-		</tr>	 
+<div layout:fragment="content" class="container my-3">
+	<a class="btn btn-primary" href="/users/registrate">회원 등록</a>
+	<hr>
+	<table class="table">
+		<thead align="center" class="table-dark">
+			<tr>
+				<th>순번</th>
+				<th>번호</th>
+				<th>이메일</th>
+				<th>이름</th>
+				<th>비밀번호</th>
+				<th>등록일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr align="center" th:each="users, loop:${paging}">
+				<td th:text="${paging.getTotalElements -(paging.number*paging.size)-loop.index}"><a th:href="@{|/users/detail/${users.idx}|}">[[${users.idx}]]</a></td>
+				<td th:text="${users.cnt}"></td>
+				<td th:text="${users.email}"></td>
+				<td th:text="${users.name}"></td>
+				<td th:text="${users.pass}"></td>
+				<td th:text="${#temporals.format(users.regdate, 'yyyy-MM-dd HH:mm')}"></td>
+			</tr>
+		</tbody>
 	</table>
-	
-	<!--  페이징 처리 시작 -->
+	<!--  페이징 이동 처리 만들기 -->
 	<div th:if="${!paging.isEmpty()}">
-		<ul class="pagination justify-content-center">
-			<!-- 이전페이지가 존재하지 않으면 이전에 링크를 비활성화 -->
-			<li class="page-item" th:classappend="${!paging.hasPrevious}? 'disabled'">
-			
-			<!-- paging.number : 현재페이지 -->
-				<a class="page-link" th:href="@{|?page=${paging.number-1}|}">
-				<span>이전</span>
-				</a>
-				
-			</li>
-			
-			<!-- 첫페이지 부터 마지막 페이지까지 루프를 돌려서 출력 -->
-			<li th:each="page : ${#numbers.sequence(0,paging.totalPages-1)}"
-			th:if="${page >= paging.number-5 and page <= paging.number+5}"
-				th:classappend="${page == paging.number} ? 'active'" 
-				class="page-item"
-			>
-				<!-- each로 계속 반복해서 돌아감 -->
-				<a th:text=${page} class="page-link" th:href="@{|?page=${page}|}">
-				
+		<ul class ="pagination justify-content-center"> 
+			<li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+				<a class ="page-link" th:href="@{|?page=${paging.number-1}|}">
+					<span>이전</span>
 				</a>
 			</li>
-			
-			
-			<!-- 다음을 처리하는 블락 -->
+			<li th:each
+			="page: ${#numbers.sequence(0, paging.totalPages-1)}" th:if="${page >= paging.number-5 and page <= paging.number+5}" th:classappend="${page == paging.number} ? 'active'"
+			class="page-item">
+				<a th:text ="${page}"class="page-link" th:href="@{|?page=${page}|}"></a>
+			</li>
 			<li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-				<a class="page-link" th:href="@{|?page=${paging.number+1}|}">
+				<a class ="page-link" th:href="@{|?page=${paging.number+1}|}">
 					<span>다음</span>
 				</a>
 			</li>
-			
-		</ul>	
+		</ul>
 	</div>
-	<!--  페이징 처리 끝 -->
-	<!--  새글 등록 버튼 -->
-	<a th:href="@{/users/create}" class="btn btn-primary">회원가입</a>
-	</div>
-
 </div>
+</body>
 </html>

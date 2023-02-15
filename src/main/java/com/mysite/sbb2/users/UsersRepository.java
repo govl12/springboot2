@@ -15,6 +15,7 @@ public interface UsersRepository extends JpaRepository<Users, Integer>{
 	
 	Users findByIdx(int idx);
 	
+	//페이징 처리하기 위한 메소드 
 	Page<Users> findAll(Pageable pageable);
 	
 	

@@ -1,9 +1,6 @@
 package com.mysite.sbb2.users;
 
-
-
-
-
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,9 +16,8 @@ public class UsersForm {
 	private String pass;
 	
 	@NotEmpty(message="이메일을 입력해주세요")
+	@Email
 	private String email;
 	
-	@NotEmpty(message="아무 숫자를 입력해주세요")
-	private String cnt;
 	
 }

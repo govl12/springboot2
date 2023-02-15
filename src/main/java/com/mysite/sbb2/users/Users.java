@@ -32,7 +32,7 @@ public class Users {
 	
 	private LocalDateTime regdate;
 	
-	private String cnt;
+	private int cnt;
 	
 	//private List<Users> usersList;
 
